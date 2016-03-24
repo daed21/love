@@ -17,3 +17,7 @@
 #copyright{margin-top:10px;text-align:center;width:100%;color:#666}
 #errorMsg{width:100%;text-align:center;font-size:13px;position:absolute;top:20px;left:0}
 #copyright a{color:#666}
+
+#inp  {width:100px;height:50px;margin:0 auto;border:1px solid #333;position:absolute;}
+#output {width:100px;height:50px;margin:0 auto;border:1px solid #333;position:relative;top:100px;}
+.btn {position:absolute;top:200px;left:100px;top:10px;}

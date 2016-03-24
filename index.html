@@ -15,6 +15,7 @@
 </head>
 <body>
 <div id="mainDiv">
+	<div id="inp">asdf</div>	<div id="output">asdf222</div> <input class="btn" value="按住我1秒钟才行" />
 	<div id="content">
 		<div id="code">
 			<span class="comments">/**</span><br />
@@ -58,6 +59,69 @@
 	</div>
 </div>
 <script type="text/javascript">
+  $(document).ready(function(){
+            $("input").mousedown(function(){
+                var flag = false;
+                var stop;
+                stop = setTimeout(function(){//down 1s，才运行。
+                    flag = true;
+                    alert("开始处理你的代码.");
+                }, 1000);
+                $("input").mouseup(function(){//鼠标up时，判断down了多久，不足一秒，不执行down的代码。
+                    if (!flag) {
+                        clearTimeout(stop);
+                    }
+                });
+            });
+
+
+           $("input").bind("touchstart",function(){
+                var flag = false;
+                var stop;
+                stop = setTimeout(function(){//down 1s，才运行。
+                    flag = true;
+                    alert("开始处理你的代码.");
+                }, 1000);
+                $("input").bind("touchend",function(){//鼠标up时，判断down了多久，不足一秒，不执行down的代码。
+                    if (!flag) {
+                        clearTimeout(stop);
+                    }
+                });
+            });
+
+
+
+        });
+
+function load (){  
+    document.addEventListener('touchstart',touch, false);  
+    document.addEventListener('touchmove',touch, false);  
+    document.addEventListener('touchend',touch, false);  
+       
+    function touch (event){  
+        var event = event || window.event;  
+           
+        var oInp = document.getElementById("inp");  
+   
+        switch(event.type){  
+            case "touchstart":  
+                oInp.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";  
+                break;  
+            case "touchend":  
+                oInp.innerHTML = "<br>Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";  
+                break;  
+            case "touchmove":  
+                event.preventDefault();  
+                oInp.innerHTML = "<br>Touch moved (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";  
+                break;  
+        }  
+           
+    }  
+}  
+window.addEventListener('load',load, false);
+
+
+
 nowtime();
 function nowtime(){
 	var mydate = new Date();
